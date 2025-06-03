@@ -1,5 +1,11 @@
-# 全局忽略所有文件（保留目录结构）
-*
+# =============== 首先：所有保留规则 =============== 
+
+# 保留关键配置文件
+!.gitignore
+!.gtkwaverc
+!pytest.ini
+!Makefile
+!*.pdf
 
 # 保留源代码文件
 !*.py
@@ -8,24 +14,24 @@
 !*.md
 !*.txt
 
-# 保留关键配置和脚本
-!.gitignore
-!.gtkwaverc
-!pytest.ini
-!Makefile
-!*.pdf
+# 保留根目录的特殊文件
+!Cache.v
 
-# 保留特定目录结构（里面的文件根据类型单独处理）
+# 保留目录结构（注意带斜杠的语法）
 !rtl/
-!src/
 !test/
+!src/
 !Cache/
 
-# ======================
-# 特定目录忽略规则
-# ======================
+# =============== 其次：子目录保留规则 =============== 
 
-# 在Cache目录中忽略编译产物和缓存文件
+# Cache 目录特殊处理
+!Cache/*.py
+!Cache/signals.json
+!Cache/xspcomm/
+!Cache/xspcomm/*.py
+
+# Cache 目录下的保留规则
 Cache/*.so
 Cache/*.so.*
 Cache/*.tab
@@ -36,40 +42,36 @@ Cache/xspcomm/*.so
 Cache/xspcomm/*.so.*
 Cache/xspcomm/__pycache__/
 
-# 在src和test目录中忽略Python缓存
-src/__pycache__/
-src/**/__pycache__/
+# src 目录特殊处理
+!src/env/
+!src/env/*.py
+!src/ref/
+!src/ref/*.py
+!src/utils/
+!src/utils/*.py
+
+# test 目录特殊处理
+!test/*.py
 test/__pycache__/
 
-# 在xspcomm目录中保留Python文件
-!Cache/xspcomm/*.py
+# =============== 最后：全局忽略规则 =============== 
 
-# 保留Cache中的特定Python文件
-!Cache/*.py
-!Cache/signals.json    # 如果需要此文件，去掉这行开头的感叹号
+# 全局忽略所有文件和目录
+*
 
-# 保留根目录的Cache.v
-!Cache.v
-
-# 忽略测试和编译输出目录
+# 其他全局忽略规则
 picker_out/
 build/
 bin/
 obj/
 target/
 dist/
-
-# 忽略IDE配置文件
 .idea/
 .vscode/
 *.iml
 *.swp
-
-# 忽略覆盖率报告
 *.dat
 *.fst
-
-# 忽略二进制和可执行文件
 *.exe
 *.out
 *.bin
@@ -77,7 +79,5 @@ dist/
 *.a
 *.class
 *.jar
-
-# 忽略操作系统文件
 .DS_Store
 Thumbs.db

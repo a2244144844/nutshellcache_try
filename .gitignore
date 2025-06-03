@@ -1,0 +1,66 @@
+# ===== 保留关键配置 =====
+!.gitignore
+!.gtkwaverc
+!pytest.ini
+!Makefile
+!*.pdf
+!*.md
+!*.txt
+
+# ===== 保留所有源代码文件 =====
+!*.py
+!*.sv
+!*.v
+
+# ===== 保留根目录特殊文件 =====
+!Cache.v
+!Readme.md
+
+# ===== 保留整个目录结构 =====
+# 注意：需要为每个目录指定保留
+!rtl/
+!rtl/**
+!test/
+!test/**
+!src/
+!src/**
+!Cache/
+!Cache/**
+
+# ===== 在目录内定义具体忽略规则 =====
+# Cache 目录忽略
+Cache/*.so
+Cache/*.so.*
+Cache/*.tab
+Cache/*.dat
+Cache/__pycache__/
+Cache/xspcomm/__pycache__/
+
+# src 和 test 忽略缓存
+src/**/__pycache__/
+test/__pycache__/
+
+# ===== 全局忽略 =====
+*.o
+*.a
+*.class
+*.jar
+*.exe
+*.bin
+*.log
+*.fst
+*.swp
+*.iml
+.DS_Store
+Thumbs.db
+
+# ===== 忽略系统/IDE文件夹 =====
+.idea/
+.vscode/
+.pytest_cache/
+picker_out/
+build/
+bin/
+obj/
+dist/
+target/

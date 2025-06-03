@@ -14,6 +14,11 @@ async def test_smoke(start_func):
     env: NtCacheEnv = await start_func()
 
     await env.usertop.block_write(data_list = [0x8], addr = 0x100, user = random.randint(0, 65535), size = 0)   
+    await env.usertop.block_write(data_list = [0x8], addr = 0x100, user = random.randint(0, 65535), size = 0)   
+    # await env.usertop.block_write(data_list = [0x8], addr = 0x108, user = random.randint(0, 65535), size = 0)   
+    await env.usertop.block_read(addr=0x100, user=random.randint(0, 65535))
+    await env.usertop.block_read(addr=0x100, user=random.randint(0, 65535))
+    # await env.usertop.block_read(addr=0x108, user=random.randint(0, 65535))
     # await env.usertop.block_read(0x108, user = random.randint(0, 65535))
 
     #logging.debug("block_read finished")

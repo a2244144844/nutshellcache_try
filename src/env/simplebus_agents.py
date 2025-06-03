@@ -83,6 +83,7 @@ class SimpleBusMasterAgent(Agent):
             # self.bundle.req.valid.value = 0  # 拉低 valid，防止 back-to-back 出错
             # await self.bundle.step()  # 多等一拍确保 handshake 完成
 
+        self.bundle.req.valid.value = 0
         logging.debug(f"[AGENT] write burst of {size + 1} beats completed")
         return {"user": user}
     

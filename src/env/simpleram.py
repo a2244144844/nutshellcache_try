@@ -12,6 +12,16 @@ class SimpleBusRam:
         self.data = {}
         self.agent = agent
 
+
+    def init_memory(self, init_data: dict):
+        """
+        用于初始化内存。
+        参数：
+            init_data (dict): 形如 {addr0: data0, addr1: data1, ...}
+        """
+        for addr, data in init_data.items():
+            self.data[addr] = data
+
     async def rsp_write_burst(self, req):
         addr = req["addr"]
         while True:
